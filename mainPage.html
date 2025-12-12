@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<style> 
+  body {background-color: silver;}
+  h2 {color: black;}
+  .button {
+    background-color: green;
+    border: none;
+    color: beige;
+    padding: 8px 38px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .button-container {
+    display: flex;
+    gap: 10px;
+  }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Application</title>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Todo Application</h1>
+  </header>
+  
+  <div id="updatesList">
+    <h2>Todo List</h2>
+    <div class="button-container">
+      <form method="post" action="/addTodoRequest">
+        <button class="button" type="submit">Add New Todo</button>
+      </form>
+      
+      <form method="post" action="/todoListRequest">
+        <button class="button" type="submit">Display Todos</button>
+      </form>
+      
+      <form method="post" action="/userLogout">
+        <button class="button" type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

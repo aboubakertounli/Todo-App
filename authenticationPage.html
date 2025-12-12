@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang = "en">
+<style> 
+    body {background-color: silver;}
+    h2   {color: black;}
+    h3   {color: blue;}
+    p    {color: black;}
+    table, th, td {border:1px solid black;}
+    .button {
+    background-color: green;
+    border: none;
+    color: beige;
+    padding: 8px 38px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .gmail-button {
+    background-color: #EA4335;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .gmail-button:hover {
+    background-color: #c5221f;
+  }
+</style>
+  <head>
+    <title>SUD312--- Achitectures logicielles et middlewares </title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+  <header>
+    <h1>User Authentication Page ...</h1>
+  </header>
+  <form method = "post">    
+    <div class = "container">
+    <label for = "login"><b>Login : </b></label>
+    <input type = "text" placeholder = "Enter your username" name = "username" required>
+    <label for = "password"><b>Password : </b></label>
+    <input type = "password" placeholder = "Enter your password" name = "password" required>
+    <br>  
+    <button class = "button" type = "submit" id = "loginButton"  formaction = "/userLogin">  Submit </button>
+    <button class = "button" type = "submit" id = "cancelButton" formaction = "/userCancel"> Cancel </button>
+    </div> 
+  </form>
+  
+  <hr>
+  <div class = "container">
+    <p><b>Or login with Gmail:</b></p>
+    <a href="/auth/google" class="gmail-button">Login with Gmail</a>
+  </div>
+  </body>
+</html>
