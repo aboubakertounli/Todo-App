@@ -1,0 +1,67 @@
+import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate, Link } from 'react-router-dom';
+
+const RegisterPage = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const { register } = useAuth();
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const result = await register(name, email, password);
+        if (result.success) {
+            navigate('/');
+        } else {
+            setError(result.message);
+        }
+    };
+
+    return (
+        <div className="auth-container">
+            <h2>Create Account</h2>
+            {error && <div className="error-message">{error}</div>}
+            <form onSubmit={handleSubmit} className="auth-form">
+                <div className="form-group">
+                    <label>Name</label>
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        placeholder="Enter your name"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        placeholder="Enter your email"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        placeholder="Create a password"
+                    />
+                </div>
+                <button type="submit" className="btn-primary">Register</button>
+            </form>
+            <div className="auth-footer">
+                Already have an account? <Link to="/login">Login</Link>
+            </div>
+        </div>
+    );
+};
+
+export default RegisterPage;
