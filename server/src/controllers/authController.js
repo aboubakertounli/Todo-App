@@ -63,3 +63,44 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+exports.googleAuth = async (req, res) => {
+    try {
+        const { token } = req.body;
+        const ticket = await client.verifyIdToken({
+            idToken: token,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+        const { name, email, sub: googleId } = ticket.getPayload();
+
+        let user = await prisma.user.findUnique({ where: { email } });
+
+        if (!user) {
+            user = await prisma.user.create({
+                data: {
+                    email,
+                    name,
+                    googleId,
+                    password: null,
+                },
+            });
+        } else if (!user.googleId) {
+            user = await prisma.user.update({
+                where: { email },
+                data: { googleId },
+            });
+        }
+
+        const jwtToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+            expiresIn: '1h',
+        });
+
+        res.json({ token: jwtToken, user: { id: user.id, email: user.email, name: user.name } });
+    } catch (error) {
+        console.error(error);
+        res.status(401).json({ message: 'Google authentication failed' });
+    }
+};

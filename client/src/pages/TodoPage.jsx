@@ -55,7 +55,10 @@ const TodoPage = () => {
     return (
         <div className="container">
             <header className="header">
-                <h1>Welcome, {user?.name}</h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <img src="/Icon.png" alt="Todo App Logo" style={{ width: '40px', height: '40px' }} />
+                    <h1>Welcome, {user?.name}</h1>
+                </div>
                 <button onClick={logout} className="btn-logout">Logout</button>
             </header>
 

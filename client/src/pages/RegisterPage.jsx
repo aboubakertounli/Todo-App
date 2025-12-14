@@ -22,6 +22,9 @@ const RegisterPage = () => {
 
     return (
         <div className="auth-container">
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+                <img src="/Icon.png" alt="Todo App Logo" style={{ width: '64px', height: '64px' }} />
+            </div>
             <h2>Create Account</h2>
             {error && <div className="error-message">{error}</div>}
             <form onSubmit={handleSubmit} className="auth-form">
