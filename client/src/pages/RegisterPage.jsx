@@ -22,8 +22,9 @@ const RegisterPage = () => {
 
     return (
         <div className="auth-container">
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem', gap: '1rem' }}>
                 <img src="/Icon.png" alt="Todo App Logo" style={{ width: '64px', height: '64px' }} />
+                <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>Todo App</h1>
             </div>
             <h2>Create Account</h2>
             {error && <div className="error-message">{error}</div>}

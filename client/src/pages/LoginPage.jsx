@@ -22,8 +22,9 @@ const LoginPage = () => {
 
     return (
         <div className="auth-container">
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem', gap: '1rem' }}>
                 <img src="/Icon.png" alt="Todo App Logo" style={{ width: '64px', height: '64px' }} />
+                <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>Todo App</h1>
             </div>
             <p style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
                 Organize your tasks, notes, and missions effortlessly in one secure place.
